@@ -1,4 +1,6 @@
-
+.loginBlock{
+    float: right;
+}
 .header {
     grid-area: h;
     background-color: green;

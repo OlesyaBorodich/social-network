@@ -3,33 +3,37 @@ import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profle";
-import Dialogs from "./components/Dialogs/Dialogs";
+
 import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfleContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
+
 
 
 const App = (props) => {
-    debugger;
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
-
-                <div> <Navbar/>
-                    <Route path='/friends' render={()=><Friends state={props.state.friendsData}/>}/></div>
+                <HeaderContainer/>
+                 <Navbar/>
+                    <Route path='/friends' render={()=><Friends />}/></div>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={()=><Dialogs  state={props.state.messagesPage}/>}/>
-                    <Route path='/profile' render={()=><Profile  state={ props.state.profilePage.postsData}/>}/>
+                    <Route path='/dialogs' render={()=><DialogsContainer  />}/>
+                    <Route path='/profile/:userId?' render={()=><ProfileContainer />}/>
                     <Route path='/music' render={()=><Music/>}/>
                     <Route path='/news' render={()=><News/>}/>
                     <Route path='/settings' render={()=><Settings/>}/>
+                    <Route path='/users' render={()=><UsersContainer/>}/>
+                    <Route path='/login' render={()=><Login/>}/>
 
                 </div>
-            </div>
         </BrowserRouter>)
 
 }
